@@ -15,6 +15,7 @@ import fr.axicer.object.CreateRecipeButton;
 import fr.axicer.object.Frame;
 import fr.axicer.object.MaximizeButton;
 import fr.axicer.object.MinimizeButton;
+import fr.axicer.object.ModifyRecipeButton;
 import fr.axicer.object.ReduceButton;
 import fr.axicer.object.SearchRecipeButton;
 import fr.axicer.object.SettingsButton;
@@ -89,6 +90,7 @@ public class Main {
 		frame.add(new ReduceButton());
 		frame.add(new CreateRecipeButton());
 		frame.add(new SearchRecipeButton());
+		frame.add(new ModifyRecipeButton());
 		
 		if(Main.gui != null)Main.gui.hide();
 		if(gui != null){

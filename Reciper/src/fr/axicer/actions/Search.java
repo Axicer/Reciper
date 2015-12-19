@@ -29,8 +29,6 @@ public class Search implements ActionListener {
 				}
 			}
 		}
-		// TODO draw result GUI
-		
 		recipes = new ArrayList<Recipe>();
 		
 		for (File f : relatedSearch) {

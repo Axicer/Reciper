@@ -20,4 +20,6 @@ public class EN {
 	public static final String recipeCantbeEmpty = "Recipe can't be empty !";
 	public static final String recipeAlreadyAdded = "Recipe already added !";
 	public static final String error = "Error";
+	public static final String modifyRecipe = "Modify recipe";
+	public static final String modifyTheRecipe = "Modify recipe";
 }

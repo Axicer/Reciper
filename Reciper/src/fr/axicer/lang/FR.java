@@ -20,4 +20,6 @@ public class FR {
 	public static final String recipeCantbeEmpty = "La recette ne peut pas etre vide !";
 	public static final String recipeAlreadyAdded = "La recette a deja été ajoutée !";
 	public static final String error = "Erreur";
+	public static final String modifyRecipe = "Modifier une recette";
+	public static final String modifyTheRecipe = "Modifier la recette";
 }
