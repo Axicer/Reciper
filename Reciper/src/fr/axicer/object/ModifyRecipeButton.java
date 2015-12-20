@@ -30,7 +30,7 @@ public class ModifyRecipeButton extends JButton implements ActionListener{
 		setBackground(new Color(59, 89, 182));
 		setFocusPainted(false);
 		setFont(new Font("Tahoma", Font.BOLD, 12));
-		this.setBounds(404, 0, 200, 50);
+		this.setBounds(324, 0, 170, 50);
 		this.addActionListener(this);
 	}
 	

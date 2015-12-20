@@ -27,7 +27,7 @@ public class SearchRecipeButton extends JButton implements ActionListener{
 		setBackground(new Color(59, 89, 182));
 		setFocusPainted(false);
 		setFont(new Font("Tahoma", Font.BOLD, 12));
-		this.setBounds(202, 0, 200, 50);
+		this.setBounds(152, 0, 170, 50);
 		this.addActionListener(this);
 	}
 	

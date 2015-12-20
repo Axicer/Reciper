@@ -16,7 +16,8 @@ public enum Images
   STARTING(new ImageIcon(Images.class.getResource("img/starting.png"))),
   SETTINGS(new ImageIcon(Images.class.getResource("img/reglages.png"))),
   SETTINGS_HOVER(new ImageIcon(Images.class.getResource("img/reglages_hover.png"))),
-  BROWSE(new ImageIcon(Images.class.getResource("img/browse.png")));
+  BROWSE(new ImageIcon(Images.class.getResource("img/browse.png"))),
+  CHOOSE(new ImageIcon(Images.class.getResource("img/choose.png")));
   
   private ImageIcon icon;
   

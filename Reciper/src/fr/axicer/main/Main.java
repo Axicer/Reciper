@@ -3,6 +3,7 @@ package fr.axicer.main;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -34,6 +35,7 @@ public class Main {
 	public static final double AppVersion = 1.3;
 	public static boolean isMaximized = false;
 	public static Frame frame;
+	public static Frame lastFrame;
 	public static GUI gui;
 	public static GUI lastgui;
 	
@@ -77,9 +79,15 @@ public class Main {
 	}
 	
 	public static void drawFrame(GUI gui, int x, int y, int width, int height){
-		if(frame != null)frame.setVisible(false);
+		lastFrame = frame;
 		frame = new Frame(TitleManager.getTitle(),x, y, width, height, true);
 		frame.setVisible(true);
+		if(lastFrame != null){
+			lastFrame.setVisible(false);
+		}
+		
+		frame.setContentPane(new JLabel(new ImageIcon(Images.CHOOSE.getIcon().getImage().getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH))));
+		
 		frame.add(new CloseButton());
 		if(isMaximized){
 			frame.add(new MinimizeButton());
@@ -98,7 +106,6 @@ public class Main {
 			Main.gui = gui;
 			gui.show();
 		}
-		
 		
 		frame.repaint();
 		frame.setVisible(true);
