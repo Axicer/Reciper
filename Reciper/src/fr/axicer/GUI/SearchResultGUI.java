@@ -1,6 +1,5 @@
 package fr.axicer.GUI;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.ScrollPane;
@@ -19,6 +18,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import fr.axicer.actions.Search;
 import fr.axicer.lang.EN;
@@ -71,14 +72,16 @@ public class SearchResultGUI extends GUI{
 				for(Recipe rec : Search.recipes){
 					if(rec.getTitle() == choice.getSelectedValue()){
 						JFrame f = new JFrame(rec.getTitle());
-						f.setBounds(1, 1, 500, 300);
-						f.setLayout(new BorderLayout());
+						f.setBounds(Main.screenWidth/4, Main.screeenHeight/4, 500, 300);
+						JTextArea textField = new JTextArea(rec.getRecipe()
+								.replace("<html>", "")
+								.replace("</html>", "")
+								.replace("<br>", "\n"));
+						textField.setEditable(false);
 						
-						JLabel r = new JLabel(rec.getRecipe());
-						f.add(r, BorderLayout.NORTH);
-						r.setLocation(0, 0);
-						
-						r.setSize(Main.frame.getWidth(), Main.frame.getHeight());
+					    JScrollPane scrollBar = new JScrollPane(textField);
+					   
+					    f.add(scrollBar);
 						
 						f.setVisible(true);
 					}
@@ -135,14 +138,16 @@ public class SearchResultGUI extends GUI{
 						for(Recipe rec : Search.recipes){
 							if(rec.getTitle() == choice.getSelectedValue()){
 								JFrame f = new JFrame(rec.getTitle());
-								f.setBounds(1, 1, 500, 300);
-								f.setLayout(new BorderLayout());
-								
-								JLabel r = new JLabel(rec.getRecipe());
-								f.add(r, BorderLayout.NORTH);
-								r.setLocation(0, 0);
-								
-								r.setSize(Main.frame.getWidth(), Main.frame.getHeight());
+								f.setBounds(Main.screenWidth/4, Main.screeenHeight/4, 500, 300);
+								JTextArea textField = new JTextArea(rec.getRecipe()
+										.replace("<html>", "")
+										.replace("</html>", "")
+										.replace("<br>", "\n"));
+								textField.setEditable(false);
+
+							    JScrollPane scrollBar = new JScrollPane(textField);
+							   
+							    f.add(scrollBar);
 								
 								f.setVisible(true);
 							}

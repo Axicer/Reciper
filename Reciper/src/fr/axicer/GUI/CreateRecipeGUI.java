@@ -134,13 +134,13 @@ public class CreateRecipeGUI extends GUI{
 					
 					@Override
 					public String getDescription() {
-						return "Portable Network Graphics (.png)";
+						return "Images (.png;.jpg;.jpeg;.bmp)";
 					}
 					
 					@Override
 					public boolean accept(File f) {
 						if(f.isFile()){
-							if(f.getName().toLowerCase().endsWith(".png")){
+							if(f.getName().toLowerCase().endsWith(".png") || f.getName().toLowerCase().endsWith(".jpg") || f.getName().toLowerCase().endsWith(".jpeg") || f.getName().toLowerCase().endsWith(".bmp")){
 								return true;
 							}
 							return false;
