@@ -21,5 +21,10 @@ public class EN {
 	public static final String recipeAlreadyAdded = "Recipe already added !";
 	public static final String error = "Error";
 	public static final String modifyRecipe = "Modify recipe";
+	public static final String modified = "Recipe modified !";
+	public static final String modification = "Modification";
 	public static final String modifyTheRecipe = "Modify recipe";
+	public static final String modify = "Modify";
+	public static final String creation = "Creation";
+	public static final String created = "Recipe added !";
 }

@@ -62,9 +62,9 @@ public class selectRecipeGUI extends GUI {
 		
 		open = new JButton();
 		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			open.setText(FR.openRecipe);
+			open.setText(FR.modifyTheRecipe);
 		}else{
-			open.setText(EN.openRecipe);
+			open.setText(EN.modifyTheRecipe);
 		}
 		open.setForeground(Color.WHITE);
 		open.setBackground(Color.GREEN);
@@ -80,7 +80,15 @@ public class selectRecipeGUI extends GUI {
 			public void actionPerformed(ActionEvent e) {
 				for(Recipe rec : r){
 					if(rec.getTitle() == choice.getSelectedValue()){
-						//send recipe to modifyGUI
+						if(Main.isMaximized){
+							Main.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+							ModifyRecipeGUI.loadGUI(rec);
+							Main.gui.show();
+						}else{
+							Main.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+							ModifyRecipeGUI.loadGUI(rec);
+							Main.gui.show();
+						}
 					}
 				}
 			}
@@ -134,7 +142,15 @@ public class selectRecipeGUI extends GUI {
 					if(e.getClickCount() == 2){
 						for(Recipe rec : r){
 							if(rec.getTitle() == choice.getSelectedValue()){
-								//send recipe to modifyGUI
+								if(Main.isMaximized){
+									Main.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+									ModifyRecipeGUI.loadGUI(rec);
+									Main.gui.show();
+								}else{
+									Main.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+									ModifyRecipeGUI.loadGUI(rec);
+									Main.gui.show();
+								}
 							}
 						}
 					}

@@ -22,7 +22,7 @@ public class ReduceButton extends JButton implements ActionListener,MouseListene
 		this.setBorderPainted(false);
 		this.setContentAreaFilled(false);
 		this.setOpaque(false);
-		this.setBounds(Main.frame.getWidth()-32-32-32-2, 0, 32, 32);
+		this.setBounds(Main.frame.getWidth()-64-32-4, 0, 32, 32);
 		this.setIcon(button);
 		this.addActionListener(this);
 		this.addMouseListener(this);

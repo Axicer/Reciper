@@ -30,13 +30,10 @@ public class Recipe {
 			StringBuilder sb = new StringBuilder();
 		    String line = br.readLine();
 		    
-		    sb.append("<html>");
 		    while (line != null) {
 		        sb.append(line);
-		        sb.append("<br>");
 		        line = br.readLine();
 		    }
-		    sb.append("</html>");
 		    rcp = sb.toString();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

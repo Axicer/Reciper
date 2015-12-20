@@ -17,6 +17,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import fr.axicer.Images;
+import fr.axicer.GUI.CreateRecipeGUI;
+import fr.axicer.GUI.SearchResultGUI;
+import fr.axicer.GUI.selectRecipeGUI;
+import fr.axicer.actions.Search;
 import fr.axicer.lang.EN;
 import fr.axicer.lang.FR;
 import fr.axicer.main.Main;
@@ -37,7 +41,7 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 		this.setOpaque(false);
 		this.setBorderPainted(false);
 		this.setIcon(button);
-		this.setBounds(Main.frame.getWidth()-132, 0, 32, 32);
+		this.setBounds(Main.frame.getWidth()-134, 0, 32, 32);
 		this.addActionListener(this);
 		this.addMouseListener(this);
 	}
@@ -50,6 +54,7 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 		}else{
 			frame.setTitle(EN.settings);
 		}
+		frame.setIconImage(Images.ICON.getIcon().getImage());
 		frame.setBounds(Main.screenWidth/4, Main.screeenHeight/6, 600, 450);
 		frame.setLayout(null);
 		frame.setResizable(false);
@@ -108,13 +113,14 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 		}else{
 			apply.setText(EN.apply);
 		}
-		apply.setBounds(0, frame.getHeight()-80, 200, 50);
+		apply.setBounds(frame.getWidth()-200, frame.getHeight()-80, 200, 50);
 		apply.setForeground(Color.WHITE);
 		apply.setBackground(Color.GREEN);
 		apply.setFocusPainted(false);
 		apply.setFont(new Font("Tahoma", Font.BOLD, 12));
 		apply.addActionListener(new ActionListener() {
 			
+			@SuppressWarnings("static-access")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(lang.getSelectedItem() == "Francais"){
@@ -126,7 +132,45 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 				Configuration.saveProperties();
 				StorageManager.recipeFolder = new File(recipeFolder.getText());
 				frame.setVisible(false);
-				Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+				if(Main.isMaximized){
+					if(Main.gui instanceof SearchResultGUI){
+						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
+						SearchResultGUI.loadGUI(Search.recipes);
+						Main.gui.show();
+					}else if(Main.gui instanceof CreateRecipeGUI){
+						CreateRecipeGUI gui = (CreateRecipeGUI) Main.gui;
+						String title = gui.title.getText();
+						String recipe = gui.recette.getText();
+						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
+						CreateRecipeGUI.loadGUI(title, recipe);
+						Main.gui.show();
+					}else if(Main.gui instanceof selectRecipeGUI){
+						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
+						selectRecipeGUI.loadGUI();
+						Main.gui.show();
+					}else{
+						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
+					}
+				}else{
+					if(Main.gui instanceof SearchResultGUI){
+						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+						SearchResultGUI.loadGUI(Search.recipes);
+						Main.gui.show();
+					}else if(Main.gui instanceof CreateRecipeGUI){
+						CreateRecipeGUI gui = (CreateRecipeGUI) Main.gui;
+						String title = gui.title.getText();
+						String recipe = gui.recette.getText();
+						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+						CreateRecipeGUI.loadGUI(title, recipe);
+						Main.gui.show();
+					}else if(Main.gui instanceof selectRecipeGUI){
+						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+						selectRecipeGUI.loadGUI();
+						Main.gui.show();
+					}else{
+						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+					}
+				}
 			}
 		});
 		
@@ -136,7 +180,7 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 		}else{
 			cancel.setText(EN.cancel);
 		}
-		cancel.setBounds(frame.getWidth()-200, frame.getHeight()-80, 200, 50);
+		cancel.setBounds(0, frame.getHeight()-80, 200, 50);
 		cancel.setForeground(Color.WHITE);
 		cancel.setBackground(Color.RED);
 		cancel.setFocusPainted(false);

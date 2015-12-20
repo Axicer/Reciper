@@ -22,4 +22,9 @@ public class FR {
 	public static final String error = "Erreur";
 	public static final String modifyRecipe = "Modifier une recette";
 	public static final String modifyTheRecipe = "Modifier la recette";
+	public static final String modify = "Modifier";
+	public static final String modified = "Recette modifiée !";
+	public static final String modification = "Modification";
+	public static final String creation = "Creation";
+	public static final String created = "Recette crée !";
 }

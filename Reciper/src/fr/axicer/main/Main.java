@@ -31,7 +31,7 @@ public class Main {
 	public static int screenWidth;
 	public static int screeenHeight;
 	public static final String AppName = "Reciper";
-	public static final double AppVersion = 1.2;
+	public static final double AppVersion = 1.3;
 	public static boolean isMaximized = false;
 	public static Frame frame;
 	public static GUI gui;
@@ -51,7 +51,7 @@ public class Main {
 		starting.setAlwaysOnTop(true);
 		starting.setVisible(true);
 		try {
-			Thread.sleep(3000L);
+			Thread.sleep(1000L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

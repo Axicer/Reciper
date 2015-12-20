@@ -14,6 +14,7 @@ import java.util.Properties;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import fr.axicer.Images;
 import fr.axicer.GUI.CreateRecipeGUI;
 import fr.axicer.lang.EN;
 import fr.axicer.lang.FR;
@@ -35,6 +36,7 @@ public class SubmitRecipe implements ActionListener{
 		
 		if(title.isEmpty()){
 			JFrame error = new JFrame();
+			error.setIconImage(Images.ICON.getIcon().getImage());
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				error.setTitle(FR.error);
 			}else{
@@ -49,7 +51,7 @@ public class SubmitRecipe implements ActionListener{
 			}
 			message.setForeground(Color.RED);
 			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
+			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			error.add(message);
 			error.setVisible(true);
 			return;
@@ -57,6 +59,7 @@ public class SubmitRecipe implements ActionListener{
 		
 		if(recipe.isEmpty()){
 			JFrame error = new JFrame();
+			error.setIconImage(Images.ICON.getIcon().getImage());
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				error.setTitle(FR.error);
 			}else{
@@ -70,7 +73,7 @@ public class SubmitRecipe implements ActionListener{
 			}
 			message.setForeground(Color.RED);
 			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
+			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			error.add(message);
 			error.setVisible(true);
 			return;
@@ -93,7 +96,7 @@ public class SubmitRecipe implements ActionListener{
 			}
 			message.setForeground(Color.RED);
 			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
+			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			error.add(message);
 			error.setVisible(true);
 			return;
@@ -102,7 +105,7 @@ public class SubmitRecipe implements ActionListener{
 		try {
 			//Write recipe
 			BufferedWriter recipeBuffer = new BufferedWriter( new FileWriter( recipeFile));
-			recipeBuffer.write(recipe);
+			recipeBuffer.write("<html>"+recipe.replace("\n", "<br>")+"</html>");
 			recipeBuffer.close();
 			
 			//write properties about recipe
@@ -137,11 +140,19 @@ public class SubmitRecipe implements ActionListener{
 			CreateRecipeGUI.recette.setText("");
 				
 			//inform that the recipe has been added
-			JFrame create = new JFrame("Recette crée !");
-			JLabel message = new JLabel("Recette ajoutée !");
+			JFrame create = new JFrame();
+			JLabel message = new JLabel();
+			if(Configuration.getProperties().getProperty("language").equals("FR")){
+				create.setTitle(FR.creation);
+				message.setText(FR.created);
+			}else{
+				create.setTitle(EN.creation);
+				message.setText(EN.created);
+			}
+			create.setIconImage(Images.ICON.getIcon().getImage());
 			message.setForeground(Color.GREEN);
 			create.setResizable(false);
-			create.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 150, 50);
+			create.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			create.add(message);
 			create.setVisible(true);
 		} catch (IOException e1) {
