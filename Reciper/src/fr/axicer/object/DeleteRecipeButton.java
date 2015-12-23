@@ -7,42 +7,37 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import fr.axicer.GUI.SelectModificationRecipeGUI;
+import fr.axicer.GUI.SelectDeletionRecipeGUI;
 import fr.axicer.lang.EN;
 import fr.axicer.lang.FR;
 import fr.axicer.main.Main;
 import fr.axicer.util.Configuration;
 
-public class ModifyRecipeButton extends JButton implements ActionListener{
-
-	/**
-	 * 
-	 */
+public class DeleteRecipeButton extends JButton implements ActionListener{
+	
 	private static final long serialVersionUID = 1L;
-
-	public ModifyRecipeButton() {
+	
+	public DeleteRecipeButton() {
 		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			this.setText(FR.modifyRecipe);
+			this.setText(FR.deleteRecipe);
 		}else{
-			this.setText(EN.modifyRecipe);
+			this.setText(EN.deleteRecipe);
 		}
 		setForeground(Color.WHITE);
 		setBackground(new Color(59, 89, 182));
 		setFocusPainted(false);
 		setFont(new Font("Tahoma", Font.BOLD, 12));
-		this.setBounds(145+163+2, 0, 170, 50);
+		this.setBounds(145+163+173, 0, 175, 50);
 		this.addActionListener(this);
 	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(Main.isMaximized){
-			Main.drawFrame(new SelectModificationRecipeGUI("selectRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+			Main.drawFrame(new SelectDeletionRecipeGUI("selectDeletionRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
 		}else{
-			Main.drawFrame(new SelectModificationRecipeGUI("selectRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+			Main.drawFrame(new SelectDeletionRecipeGUI("selectDeletionRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
 		}
-		SelectModificationRecipeGUI.loadGUI();
+		SelectDeletionRecipeGUI.loadGUI();
 		Main.gui.show();
 	}
-
 }

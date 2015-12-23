@@ -27,4 +27,12 @@ public class EN {
 	public static final String modify = "Modify";
 	public static final String creation = "Creation";
 	public static final String created = "Recipe added !";
+	public static final String deleteRecipe = "delete recipe";
+	public static final String delete = "delete recipe";
+	public static final String deleted = "Deleted !";
+	public static final String recipeDeleted = "The recipe has been deleted !";
+	public static final String continuer = "Continue";
+	public static final String confirmation = "Confirmation";
+	public static final String areyousure = "Are you sure to delete this recipe ?";
+	public static final String norecipefound = "Aucune recette n'a été trouvée !";
 }

@@ -11,7 +11,8 @@ import javax.swing.JButton;
 import fr.axicer.Images;
 import fr.axicer.GUI.CreateRecipeGUI;
 import fr.axicer.GUI.SearchResultGUI;
-import fr.axicer.GUI.selectRecipeGUI;
+import fr.axicer.GUI.SelectDeletionRecipeGUI;
+import fr.axicer.GUI.SelectModificationRecipeGUI;
 import fr.axicer.actions.Search;
 import fr.axicer.main.Main;
 
@@ -66,9 +67,13 @@ public class MinimizeButton extends JButton implements ActionListener,MouseListe
 			Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
 			CreateRecipeGUI.loadGUI(title, recipe);
 			Main.gui.show();
-		}else if(Main.gui instanceof selectRecipeGUI){
+		}else if(Main.gui instanceof SelectModificationRecipeGUI){
 			Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
-			selectRecipeGUI.loadGUI();
+			SelectModificationRecipeGUI.loadGUI();
+			Main.gui.show();
+		}else if(Main.gui instanceof SelectDeletionRecipeGUI){
+			Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+			SelectDeletionRecipeGUI.loadGUI();
 			Main.gui.show();
 		}else{
 			Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);

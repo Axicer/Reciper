@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -13,8 +14,10 @@ public class Recipe {
 	private String title;
 	private String recipe;
 	private File image;
+	private File folder;
 
 	public Recipe(File file) {
+		setFolder(file);
 		String folderName = file.getName();
 		File recipe = new File(file.getPath()+"/"+folderName+".rcp");
 		File properties = new File(file.getPath()+"/"+folderName+".properties");
@@ -51,10 +54,16 @@ public class Recipe {
 		
 		try {
 			Properties property = new Properties();
-			property.load(new FileInputStream(properties));
+			FileInputStream input = new FileInputStream(properties);
+			property.load(input);
 			if(property.getProperty("image") != "null" && property.getProperty("image") != ""){
 				image = new File(property.getProperty("image"));
 			}
+			FileOutputStream output = new FileOutputStream(properties);
+			property.store(output, null);
+			
+			input.close();
+			output.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -84,5 +93,13 @@ public class Recipe {
 
 	public void setImage(File image) {
 		this.image = image;
+	}
+
+	public File getFolder() {
+		return folder;
+	}
+
+	public void setFolder(File folder) {
+		this.folder = folder;
 	}
 }

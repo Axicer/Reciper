@@ -27,9 +27,9 @@ import fr.axicer.object.Recipe;
 import fr.axicer.util.Configuration;
 import fr.axicer.util.StorageManager;
 
-public class selectRecipeGUI extends GUI {
+public class SelectModificationRecipeGUI extends GUI {
 	
-	public selectRecipeGUI(String name) {
+	public SelectModificationRecipeGUI(String name) {
 		super(name);
 	}
 

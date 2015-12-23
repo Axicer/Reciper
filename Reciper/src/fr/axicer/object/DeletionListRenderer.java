@@ -9,9 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
-import fr.axicer.GUI.SelectModificationRecipeGUI;
+import fr.axicer.GUI.SelectDeletionRecipeGUI;
 
-public class ModifyListRenderer extends DefaultListCellRenderer {
+public class DeletionListRenderer extends DefaultListCellRenderer {
 
     /**
 	 * 
@@ -25,7 +25,7 @@ public class ModifyListRenderer extends DefaultListCellRenderer {
 
         JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
         
-        ImageIcon icon = SelectModificationRecipeGUI.cellules.get(value);
+        ImageIcon icon = SelectDeletionRecipeGUI.cellules.get(value);
         Image img = icon.getImage();
         Image newimg = img.getScaledInstance(64, 64,  Image.SCALE_SMOOTH);
         icon = new ImageIcon(newimg);

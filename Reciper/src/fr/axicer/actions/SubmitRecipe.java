@@ -53,6 +53,7 @@ public class SubmitRecipe implements ActionListener{
 			error.setResizable(false);
 			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			error.add(message);
+			error.setAlwaysOnTop(true);
 			error.setVisible(true);
 			return;
 		}
@@ -75,6 +76,7 @@ public class SubmitRecipe implements ActionListener{
 			error.setResizable(false);
 			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			error.add(message);
+			error.setAlwaysOnTop(true);
 			error.setVisible(true);
 			return;
 		}
@@ -98,6 +100,7 @@ public class SubmitRecipe implements ActionListener{
 			error.setResizable(false);
 			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			error.add(message);
+			error.setAlwaysOnTop(true);
 			error.setVisible(true);
 			return;
 		}
@@ -130,6 +133,8 @@ public class SubmitRecipe implements ActionListener{
 
 				// save properties to project root folder
 				recipeProperties.store(output, null);
+				
+				output.close();
 
 			} catch (IOException io) {
 				io.printStackTrace();
@@ -154,6 +159,7 @@ public class SubmitRecipe implements ActionListener{
 			create.setResizable(false);
 			create.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			create.add(message);
+			create.setAlwaysOnTop(true);
 			create.setVisible(true);
 		} catch (IOException e1) {
 			e1.printStackTrace();

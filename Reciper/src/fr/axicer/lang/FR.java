@@ -27,4 +27,12 @@ public class FR {
 	public static final String modification = "Modification";
 	public static final String creation = "Creation";
 	public static final String created = "Recette crée !";
+	public static final String deleteRecipe = "Supprimer une recette";
+	public static final String delete = "Supprimer la recette";
+	public static final String deleted = "Supprimé !";
+	public static final String recipeDeleted = "La recette a été supprimée !";
+	public static final String continuer = "Continuer";
+	public static final String confirmation = "Confirmation";
+	public static final String areyousure = "Etes-vous sur de vouloir supprimer cette recette ?";
+	public static final String norecipefound = "Aucune recette n'a été trouvée !";
 }

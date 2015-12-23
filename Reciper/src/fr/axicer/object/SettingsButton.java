@@ -19,7 +19,8 @@ import javax.swing.JTextField;
 import fr.axicer.Images;
 import fr.axicer.GUI.CreateRecipeGUI;
 import fr.axicer.GUI.SearchResultGUI;
-import fr.axicer.GUI.selectRecipeGUI;
+import fr.axicer.GUI.SelectDeletionRecipeGUI;
+import fr.axicer.GUI.SelectModificationRecipeGUI;
 import fr.axicer.actions.Search;
 import fr.axicer.lang.EN;
 import fr.axicer.lang.FR;
@@ -58,6 +59,7 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 		frame.setBounds(Main.screenWidth/4, Main.screeenHeight/6, 600, 450);
 		frame.setLayout(null);
 		frame.setResizable(false);
+		frame.setAlwaysOnTop(true);
 		
 		JLabel chooselang = new JLabel();
 		if(Configuration.getProperties().getProperty("language").equals("FR")){
@@ -144,9 +146,13 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
 						CreateRecipeGUI.loadGUI(title, recipe);
 						Main.gui.show();
-					}else if(Main.gui instanceof selectRecipeGUI){
+					}else if(Main.gui instanceof SelectModificationRecipeGUI){
 						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
-						selectRecipeGUI.loadGUI();
+						SelectModificationRecipeGUI.loadGUI();
+						Main.gui.show();
+					}else if(Main.gui instanceof SelectDeletionRecipeGUI){
+						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
+						SelectDeletionRecipeGUI.loadGUI();
 						Main.gui.show();
 					}else{
 						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
@@ -163,9 +169,13 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
 						CreateRecipeGUI.loadGUI(title, recipe);
 						Main.gui.show();
-					}else if(Main.gui instanceof selectRecipeGUI){
+					}else if(Main.gui instanceof SelectModificationRecipeGUI){
 						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
-						selectRecipeGUI.loadGUI();
+						SelectModificationRecipeGUI.loadGUI();
+						Main.gui.show();
+					}else if(Main.gui instanceof SelectDeletionRecipeGUI){
+						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+						SelectDeletionRecipeGUI.loadGUI();
 						Main.gui.show();
 					}else{
 						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);

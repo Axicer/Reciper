@@ -13,6 +13,7 @@ import fr.axicer.lang.EN;
 import fr.axicer.lang.FR;
 import fr.axicer.object.CloseButton;
 import fr.axicer.object.CreateRecipeButton;
+import fr.axicer.object.DeleteRecipeButton;
 import fr.axicer.object.Frame;
 import fr.axicer.object.MaximizeButton;
 import fr.axicer.object.MinimizeButton;
@@ -99,6 +100,7 @@ public class Main {
 		frame.add(new CreateRecipeButton());
 		frame.add(new SearchRecipeButton());
 		frame.add(new ModifyRecipeButton());
+		frame.add(new DeleteRecipeButton());
 		
 		if(Main.gui != null)Main.gui.hide();
 		if(gui != null){

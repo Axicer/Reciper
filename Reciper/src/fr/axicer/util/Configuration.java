@@ -28,7 +28,7 @@ public class Configuration {
 
 				// set the properties value
 				properties.setProperty("language", "FR");
-				properties.setProperty("recipesFolder", StorageManager.recipeFolder.getAbsolutePath());
+				properties.setProperty("recipesFolder", StorageManager.recipeFolder.getPath());
 
 				// save properties to project root folder
 				properties.store(output, null);

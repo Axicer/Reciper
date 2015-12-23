@@ -27,7 +27,7 @@ public class CreateRecipeButton extends JButton implements ActionListener{
 		setBackground(new Color(59, 89, 182));
 		setFocusPainted(false);
 		setFont(new Font("Tahoma", Font.BOLD, 12));
-		this.setBounds(0, 0, 150, 50);
+		this.setBounds(0, 0, 145, 50);
 		this.addActionListener(this);
 	}
 	@Override

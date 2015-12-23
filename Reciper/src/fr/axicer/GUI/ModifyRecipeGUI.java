@@ -123,12 +123,12 @@ public class ModifyRecipeGUI extends GUI {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					if(Main.isMaximized){
-						Main.drawFrame(new selectRecipeGUI("selectRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
-						selectRecipeGUI.loadGUI();
+						Main.drawFrame(new SelectModificationRecipeGUI("selectRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+						SelectModificationRecipeGUI.loadGUI();
 						Main.gui.show();
 					}else{
-						Main.drawFrame(new selectRecipeGUI("selectRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
-						selectRecipeGUI.loadGUI();
+						Main.drawFrame(new SelectModificationRecipeGUI("selectRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+						SelectModificationRecipeGUI.loadGUI();
 						Main.gui.show();
 					}
 				}
@@ -259,12 +259,12 @@ public class ModifyRecipeGUI extends GUI {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					if(Main.isMaximized){
-						Main.drawFrame(new selectRecipeGUI("selectRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
-						selectRecipeGUI.loadGUI();
+						Main.drawFrame(new SelectModificationRecipeGUI("selectRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+						SelectModificationRecipeGUI.loadGUI();
 						Main.gui.show();
 					}else{
-						Main.drawFrame(new selectRecipeGUI("selectRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
-						selectRecipeGUI.loadGUI();
+						Main.drawFrame(new SelectModificationRecipeGUI("selectRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+						SelectModificationRecipeGUI.loadGUI();
 						Main.gui.show();
 					}
 				}
