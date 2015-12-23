@@ -19,7 +19,7 @@ import javax.swing.filechooser.FileFilter;
 
 import fr.axicer.Images;
 import fr.axicer.actions.ModifyRecipe;
-import fr.axicer.actions.SubmitRecipe;
+import fr.axicer.actions.createRecipe;
 import fr.axicer.lang.EN;
 import fr.axicer.lang.FR;
 import fr.axicer.main.Main;
@@ -269,7 +269,7 @@ public class ModifyRecipeGUI extends GUI {
 					}
 				}
 			});
-			submit.addActionListener(new SubmitRecipe());
+			submit.addActionListener(new createRecipe());
 			chooseImageButton.addActionListener(new ActionListener() {
 				
 				@Override

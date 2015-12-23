@@ -22,8 +22,10 @@ public class Search implements ActionListener {
 
 	public static ArrayList<Recipe> recipes;
 	
+	//action when "search button" is pressed
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//get all related search
 		ArrayList<File> relatedSearch = new ArrayList<File>();
 		String search = SearchRecipeGUI.word.getText();
 		String words[] = search.split(" ");
@@ -36,13 +38,15 @@ public class Search implements ActionListener {
 				}
 			}
 		}
+		//put them as recipe in a list
 		recipes = new ArrayList<Recipe>();
-		
 		for (File f : relatedSearch) {
 			recipes.add(new Recipe(f));
 		}
 		
+		//if there is no recipe in the list
 		if(recipes.size() == 0){
+			//create a new frame to inform that there is an error
 			JFrame error = new JFrame();
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				error.setTitle(FR.error);
@@ -65,6 +69,7 @@ public class Search implements ActionListener {
 			
 			error.setVisible(true);
 		}else{
+			//else draw frame with result
 			if(Main.isMaximized){
 				Main.drawFrame(new SearchResultGUI("searchResultGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
 			}else{

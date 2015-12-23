@@ -22,11 +22,12 @@ import fr.axicer.main.Main;
 import fr.axicer.util.Configuration;
 import fr.axicer.util.StorageManager;
 
-public class SubmitRecipe implements ActionListener{
+public class createRecipe implements ActionListener{
 
+	//create recipe
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		//get values
 		String title = CreateRecipeGUI.title.getText();
 		String recipe = CreateRecipeGUI.recette.getText();
 		File recipeFolder = new File(StorageManager.recipeFolder.toString()+"/"+title);
@@ -34,9 +35,15 @@ public class SubmitRecipe implements ActionListener{
 		File recipePropertiesFile = new File(recipeFolder+"/"+title+".properties");
 		Properties recipeProperties = new Properties();
 		
+		//if title is empty
 		if(title.isEmpty()){
+			//inform error
 			JFrame error = new JFrame();
 			error.setIconImage(Images.ICON.getIcon().getImage());
+			error.setResizable(false);
+			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			error.setAlwaysOnTop(true);
+			
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				error.setTitle(FR.error);
 			}else{
@@ -50,22 +57,27 @@ public class SubmitRecipe implements ActionListener{
 				message.setText(EN.titleCantbeEmpty);
 			}
 			message.setForeground(Color.RED);
-			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			
 			error.add(message);
-			error.setAlwaysOnTop(true);
+			
 			error.setVisible(true);
 			return;
 		}
-		
+		//if recipe is empty
 		if(recipe.isEmpty()){
+			//inform error
 			JFrame error = new JFrame();
 			error.setIconImage(Images.ICON.getIcon().getImage());
+			error.setResizable(false);
+			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			error.setAlwaysOnTop(true);
+			
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				error.setTitle(FR.error);
 			}else{
 				error.setTitle(EN.error);
 			}
+			
 			JLabel message = new JLabel();
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				message.setText(FR.recipeCantbeEmpty);
@@ -73,23 +85,30 @@ public class SubmitRecipe implements ActionListener{
 				message.setText(EN.recipeCantbeEmpty);
 			}
 			message.setForeground(Color.RED);
-			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			
 			error.add(message);
-			error.setAlwaysOnTop(true);
+			
 			error.setVisible(true);
 			return;
 		}
 		
+		//if recipe folder is empty create it
 		if(!recipeFolder.exists())recipeFolder.mkdir();
 		
+		//if file already exists
 		if(recipeFile.exists() || recipePropertiesFile.exists()){
+			//inform error
 			JFrame error = new JFrame();
+			error.setResizable(false);
+			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			error.setAlwaysOnTop(true);
+			
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				error.setTitle(FR.error);
 			}else{
 				error.setTitle(EN.error);
 			}
+			
 			JLabel message = new JLabel();
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				message.setText(FR.recipeAlreadyAdded);
@@ -97,10 +116,9 @@ public class SubmitRecipe implements ActionListener{
 				message.setText(EN.recipeAlreadyAdded);
 			}
 			message.setForeground(Color.RED);
-			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			
 			error.add(message);
-			error.setAlwaysOnTop(true);
+			
 			error.setVisible(true);
 			return;
 		}

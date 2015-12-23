@@ -25,14 +25,21 @@ import fr.axicer.util.StorageManager;
 
 public class ModifyRecipe implements ActionListener{
 
+	//action when click on "modify" button
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//get some variables of the GUI
 		Recipe r = ModifyRecipeGUI.recipe;
 		String newTitle = ModifyRecipeGUI.title.getText();
 		String newRecipe = ModifyRecipeGUI.recette.getText().replace("\n", "<br>");
 		
+		//check if title is empty
 		if(newTitle.isEmpty()){
+			//create a new frame to inform that the name can't be empty
 			JFrame error = new JFrame();
+			error.setResizable(false);
+			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
+			
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				error.setTitle(FR.error);
 			}else{
@@ -46,20 +53,26 @@ public class ModifyRecipe implements ActionListener{
 				message.setText(EN.titleCantbeEmpty);
 			}
 			message.setForeground(Color.RED);
-			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
+			
 			error.add(message);
+			
 			error.setVisible(true);
 			return;
 		}
 		
+		//check if recipe is empty
 		if(newRecipe.isEmpty()){
+			//same as title
 			JFrame error = new JFrame();
+			error.setResizable(false);
+			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
+			
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				error.setTitle(FR.error);
 			}else{
 				error.setTitle(EN.error);
 			}
+			
 			JLabel message = new JLabel();
 			if(Configuration.getProperties().getProperty("language").equals("FR")){
 				message.setText(FR.recipeCantbeEmpty);
@@ -67,13 +80,14 @@ public class ModifyRecipe implements ActionListener{
 				message.setText(EN.recipeCantbeEmpty);
 			}
 			message.setForeground(Color.RED);
-			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
+			
 			error.add(message);
+			
 			error.setVisible(true);
 			return;
 		}
 		
+		//if title and recipe are not empty than get some more variable
 		File recipeFolder = new File(StorageManager.recipeFolder.toString()+"/"+r.getTitle());
 		File recipeFile = new File(recipeFolder+"/"+r.getTitle()+".rcp");
 		File recipePropertiesFile = new File(recipeFolder+"/"+r.getTitle()+".properties");
