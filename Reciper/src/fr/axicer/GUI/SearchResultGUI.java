@@ -22,12 +22,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import fr.axicer.actions.Search;
-import fr.axicer.lang.EN;
-import fr.axicer.lang.FR;
+import fr.axicer.lang.LanguageManager;
 import fr.axicer.main.Main;
 import fr.axicer.object.Recipe;
 import fr.axicer.object.SearchListRenderer;
-import fr.axicer.util.Configuration;
 
 public class SearchResultGUI extends GUI{
 
@@ -44,19 +42,9 @@ public class SearchResultGUI extends GUI{
 	@SuppressWarnings("deprecation")
 	public static void loadGUI(final ArrayList<Recipe> r){
 		
-		select = new JLabel();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			select.setText(FR.chooseRecipe);
-		}else{
-			select.setText(EN.chooseRecipe);
-		}
+		select = new JLabel(LanguageManager.getText("chooseRecipe"));
 		
-		open = new JButton();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			open.setText(FR.openRecipe);
-		}else{
-			open.setText(EN.openRecipe);
-		}
+		open = new JButton(LanguageManager.getText("openRecipe"));
 		open.setForeground(Color.WHITE);
 		open.setBackground(Color.GREEN);
 		open.setFocusPainted(false);

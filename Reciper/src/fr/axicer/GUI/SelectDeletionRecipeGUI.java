@@ -21,12 +21,10 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 
 import fr.axicer.Images;
-import fr.axicer.lang.EN;
-import fr.axicer.lang.FR;
+import fr.axicer.lang.LanguageManager;
 import fr.axicer.main.Main;
 import fr.axicer.object.DeletionListRenderer;
 import fr.axicer.object.Recipe;
-import fr.axicer.util.Configuration;
 import fr.axicer.util.StorageManager;
 
 public class SelectDeletionRecipeGUI extends GUI {
@@ -55,19 +53,9 @@ public class SelectDeletionRecipeGUI extends GUI {
 			r.add(new Recipe(f));
 		}
 		
-		select = new JLabel();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			select.setText(FR.chooseRecipe);
-		}else{
-			select.setText(EN.chooseRecipe);
-		}
+		select = new JLabel(LanguageManager.getText("chooseRecipe"));
 		
-		open = new JButton();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			open.setText(FR.delete);
-		}else{
-			open.setText(EN.delete);
-		}
+		open = new JButton(LanguageManager.getText("delete"));
 		open.setForeground(Color.WHITE);
 		open.setBackground(Color.GREEN);
 		open.setFocusPainted(false);
@@ -82,32 +70,17 @@ public class SelectDeletionRecipeGUI extends GUI {
 			public void actionPerformed(ActionEvent e) {
 				for(final Recipe rec : r){
 					if(rec.getTitle() == choice.getSelectedValue()){
-						final JFrame frame = new JFrame();
-						if(Configuration.getProperties().getProperty("language").equals("FR")){
-							frame.setTitle(FR.confirmation);
-						}else{
-							frame.setTitle(EN.confirmation);
-						}
+						final JFrame frame = new JFrame(LanguageManager.getText("confirmation"));
 						frame.setLayout(null);
 						frame.setBounds(Main.screenWidth/2-150, Main.screeenHeight/2-75, 300, 150);
 						frame.setResizable(false);
 						frame.setIconImage(Images.ICON.getIcon().getImage());
 						frame.setAlwaysOnTop(true);
 						
-						JLabel confirm = new JLabel();
-						if(Configuration.getProperties().getProperty("language").equals("FR")){
-							confirm.setText(FR.areyousure);
-						}else{
-							confirm.setText(EN.areyousure);
-						}
+						JLabel confirm = new JLabel(LanguageManager.getText("areyousure"));
 						confirm.setBounds(0, -60, 300, 150);
 						
-						JButton continuer = new JButton();
-						if(Configuration.getProperties().getProperty("language").equals("FR")){
-							continuer.setText(FR.continuer);
-						}else{
-							continuer.setText(EN.continuer);
-						}
+						JButton continuer = new JButton(LanguageManager.getText("continuer"));
 						continuer.setBounds(frame.getWidth()-100, frame.getHeight()-70, 100, 40);
 						continuer.setForeground(Color.WHITE);
 						continuer.setBackground(Color.GREEN);
@@ -122,12 +95,7 @@ public class SelectDeletionRecipeGUI extends GUI {
 							}
 						});
 						
-						JButton cancel = new JButton();
-						if(Configuration.getProperties().getProperty("language").equals("FR")){
-							cancel.setText(FR.cancel);
-						}else{
-							cancel.setText(EN.cancel);
-						}
+						JButton cancel = new JButton(LanguageManager.getText("cancel"));
 						cancel.setBounds(0, frame.getHeight()-70, 100, 40);
 						cancel.setForeground(Color.WHITE);
 						cancel.setBackground(Color.RED);
@@ -199,32 +167,17 @@ public class SelectDeletionRecipeGUI extends GUI {
 					if(e.getClickCount() == 2){
 						for(final Recipe rec : r){
 							if(rec.getTitle() == choice.getSelectedValue()){
-								final JFrame frame = new JFrame();
-								if(Configuration.getProperties().getProperty("language").equals("FR")){
-									frame.setTitle(FR.confirmation);
-								}else{
-									frame.setTitle(EN.confirmation);
-								}
+								final JFrame frame = new JFrame(LanguageManager.getText("confirmation"));
 								frame.setLayout(null);
 								frame.setBounds(Main.screenWidth/2-150, Main.screeenHeight/2-75, 300, 150);
 								frame.setResizable(false);
 								frame.setIconImage(Images.ICON.getIcon().getImage());
 								frame.setAlwaysOnTop(true);
 								
-								JLabel confirm = new JLabel();
-								if(Configuration.getProperties().getProperty("language").equals("FR")){
-									confirm.setText(FR.areyousure);
-								}else{
-									confirm.setText(EN.areyousure);
-								}
+								JLabel confirm = new JLabel(LanguageManager.getText("areyousure"));
 								confirm.setBounds(0, -60, 300, 150);
 								
-								JButton continuer = new JButton();
-								if(Configuration.getProperties().getProperty("language").equals("FR")){
-									continuer.setText(FR.continuer);
-								}else{
-									continuer.setText(EN.continuer);
-								}
+								JButton continuer = new JButton(LanguageManager.getText("continuer"));
 								continuer.setBounds(frame.getWidth()-100, frame.getHeight()-70, 100, 40);
 								continuer.setForeground(Color.WHITE);
 								continuer.setBackground(Color.GREEN);
@@ -239,12 +192,7 @@ public class SelectDeletionRecipeGUI extends GUI {
 									}
 								});
 								
-								JButton cancel = new JButton();
-								if(Configuration.getProperties().getProperty("language").equals("FR")){
-									cancel.setText(FR.cancel);
-								}else{
-									cancel.setText(EN.cancel);
-								}
+								JButton cancel = new JButton(LanguageManager.getText("cancel"));
 								cancel.setBounds(0, frame.getHeight()-70, 100, 40);
 								cancel.setForeground(Color.WHITE);
 								cancel.setBackground(Color.RED);
@@ -288,23 +236,13 @@ public class SelectDeletionRecipeGUI extends GUI {
 		SelectDeletionRecipeGUI.loadGUI();
 		Main.gui.show();
 		
-		JFrame frame = new JFrame();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			frame.setTitle(FR.deleted);
-		}else{
-			frame.setTitle(EN.deleted);
-		}
+		JFrame frame = new JFrame(LanguageManager.getText("deleted"));
 		frame.setBounds(Main.screenWidth/2-150, Main.screeenHeight/2-75, 300, 150);
 		frame.setIconImage(Images.ICON.getIcon().getImage());
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
 		
-		JLabel label = new JLabel();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			label.setText(FR.recipeDeleted);
-		}else{
-			label.setText(EN.recipeDeleted);
-		}
+		JLabel label = new JLabel(LanguageManager.getText("recipeDeleted"));
 		
 		frame.add(label);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);

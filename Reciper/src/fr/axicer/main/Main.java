@@ -9,8 +9,7 @@ import javax.swing.JLabel;
 
 import fr.axicer.Images;
 import fr.axicer.GUI.GUI;
-import fr.axicer.lang.EN;
-import fr.axicer.lang.FR;
+import fr.axicer.lang.LanguageManager;
 import fr.axicer.object.CloseButton;
 import fr.axicer.object.CreateRecipeButton;
 import fr.axicer.object.DeleteRecipeButton;
@@ -61,12 +60,7 @@ public class Main {
 		if(OSCheck.getOS() == OSEnum.SOLARIS || OSCheck.getOS() == OSEnum.OTHER){
 			JFrame error = new JFrame("ERREUR");
 			error.setSize(800, 600);
-			JLabel label = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				label.setText(FR.systemNotSupported);
-			}else{
-				label.setText(EN.systemNotSupported);
-			}
+			JLabel label = new JLabel(LanguageManager.getText("systemNotSupported"));
 			error.setLayout(null);
 			error.setLocationRelativeTo(null);
 			error.add(label);
@@ -75,6 +69,7 @@ public class Main {
 			starting.setVisible(false);
 			new StorageManager();
 			new Configuration();
+			new LanguageManager();
 			drawFrame(null, screenWidth/5, screeenHeight/8, 800, 600);
 		}
 	}

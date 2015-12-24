@@ -16,10 +16,8 @@ import javax.swing.JLabel;
 
 import fr.axicer.Images;
 import fr.axicer.GUI.CreateRecipeGUI;
-import fr.axicer.lang.EN;
-import fr.axicer.lang.FR;
+import fr.axicer.lang.LanguageManager;
 import fr.axicer.main.Main;
-import fr.axicer.util.Configuration;
 import fr.axicer.util.StorageManager;
 
 public class createRecipe implements ActionListener{
@@ -38,24 +36,13 @@ public class createRecipe implements ActionListener{
 		//if title is empty
 		if(title.isEmpty()){
 			//inform error
-			JFrame error = new JFrame();
+			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setIconImage(Images.ICON.getIcon().getImage());
 			error.setResizable(false);
 			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			error.setAlwaysOnTop(true);
 			
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				error.setTitle(FR.error);
-			}else{
-				error.setTitle(EN.error);
-			}
-			
-			JLabel message = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				message.setText(FR.titleCantbeEmpty);
-			}else{
-				message.setText(EN.titleCantbeEmpty);
-			}
+			JLabel message = new JLabel(LanguageManager.getText("titleCantbeEmpty"));
 			message.setForeground(Color.RED);
 			
 			error.add(message);
@@ -66,24 +53,13 @@ public class createRecipe implements ActionListener{
 		//if recipe is empty
 		if(recipe.isEmpty()){
 			//inform error
-			JFrame error = new JFrame();
+			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setIconImage(Images.ICON.getIcon().getImage());
 			error.setResizable(false);
 			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			error.setAlwaysOnTop(true);
 			
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				error.setTitle(FR.error);
-			}else{
-				error.setTitle(EN.error);
-			}
-			
-			JLabel message = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				message.setText(FR.recipeCantbeEmpty);
-			}else{
-				message.setText(EN.recipeCantbeEmpty);
-			}
+			JLabel message = new JLabel(LanguageManager.getText("recipeCantbeEmpty"));
 			message.setForeground(Color.RED);
 			
 			error.add(message);
@@ -98,23 +74,12 @@ public class createRecipe implements ActionListener{
 		//if file already exists
 		if(recipeFile.exists() || recipePropertiesFile.exists()){
 			//inform error
-			JFrame error = new JFrame();
+			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setResizable(false);
 			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
 			error.setAlwaysOnTop(true);
 			
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				error.setTitle(FR.error);
-			}else{
-				error.setTitle(EN.error);
-			}
-			
-			JLabel message = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				message.setText(FR.recipeAlreadyAdded);
-			}else{
-				message.setText(EN.recipeAlreadyAdded);
-			}
+			JLabel message = new JLabel(LanguageManager.getText("recipeAlreadyAdded"));
 			message.setForeground(Color.RED);
 			
 			error.add(message);
@@ -163,15 +128,9 @@ public class createRecipe implements ActionListener{
 			CreateRecipeGUI.recette.setText("");
 				
 			//inform that the recipe has been added
-			JFrame create = new JFrame();
-			JLabel message = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				create.setTitle(FR.creation);
-				message.setText(FR.created);
-			}else{
-				create.setTitle(EN.creation);
-				message.setText(EN.created);
-			}
+			JFrame create = new JFrame(LanguageManager.getText("creation"));
+			JLabel message = new JLabel(LanguageManager.getText("created"));
+			
 			create.setIconImage(Images.ICON.getIcon().getImage());
 			message.setForeground(Color.GREEN);
 			create.setResizable(false);

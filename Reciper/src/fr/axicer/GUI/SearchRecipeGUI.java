@@ -11,10 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import fr.axicer.actions.Search;
-import fr.axicer.lang.EN;
-import fr.axicer.lang.FR;
+import fr.axicer.lang.LanguageManager;
 import fr.axicer.main.Main;
-import fr.axicer.util.Configuration;
 
 public class SearchRecipeGUI extends GUI {
 	
@@ -32,22 +30,12 @@ public class SearchRecipeGUI extends GUI {
 	
 	public static void loadGUI(){
 		
-		wordlabel = new JLabel();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			wordlabel.setText(FR.enterWordToSearch);
-		}else{
-			wordlabel.setText(EN.enterWordToSearch);
-		}
+		wordlabel = new JLabel(LanguageManager.getText("enterWordToSearch"));
 		
 		word = new JTextField();
 		word.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		
-		search = new JButton();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			search.setText(FR.search);
-		}else{
-			search.setText(EN.search);
-		}
+		search = new JButton(LanguageManager.getText("search"));
 		search.setForeground(Color.WHITE);
 		search.setBackground(Color.GRAY);
 		search.setFocusPainted(false);

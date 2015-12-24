@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,76 +17,60 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import org.json.simple.JSONObject;
+
 import fr.axicer.Images;
 import fr.axicer.GUI.CreateRecipeGUI;
 import fr.axicer.GUI.SearchResultGUI;
 import fr.axicer.GUI.SelectDeletionRecipeGUI;
 import fr.axicer.GUI.SelectModificationRecipeGUI;
 import fr.axicer.actions.Search;
-import fr.axicer.lang.EN;
-import fr.axicer.lang.FR;
+import fr.axicer.lang.LanguageManager;
 import fr.axicer.main.Main;
 import fr.axicer.util.Configuration;
 import fr.axicer.util.StorageManager;
 
 public class SettingsButton extends JButton implements ActionListener,MouseListener{
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private ImageIcon button = Images.SETTINGS.getIcon();
 	private ImageIcon button_hover = Images.SETTINGS_HOVER.getIcon();
 
 	public SettingsButton() {
-		this.setContentAreaFilled(false);
-		this.setOpaque(false);
-		this.setBorderPainted(false);
-		this.setIcon(button);
-		this.setBounds(Main.frame.getWidth()-134, 0, 32, 32);
-		this.addActionListener(this);
-		this.addMouseListener(this);
+		setContentAreaFilled(false);
+		setOpaque(false);
+		setBorderPainted(false);
+		setIcon(button);
+		setBounds(Main.frame.getWidth()-134, 0, 32, 32);
+		addActionListener(this);
+		addMouseListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		final JFrame frame = new JFrame();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			frame.setTitle(FR.settings);
-		}else{
-			frame.setTitle(EN.settings);
-		}
+		final JFrame frame = new JFrame(LanguageManager.getText("settings"));
 		frame.setIconImage(Images.ICON.getIcon().getImage());
 		frame.setBounds(Main.screenWidth/4, Main.screeenHeight/6, 600, 450);
 		frame.setLayout(null);
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
 		
-		JLabel chooselang = new JLabel();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			chooselang.setText(FR.chooseLanguage);
-		}else{
-			chooselang.setText(EN.chooseLanguage);
-		}
+		JLabel chooselang = new JLabel(LanguageManager.getText("chooseLanguage"));
 		chooselang.setBounds(0, 0, 200, 30);
 		
-		final JComboBox<String> lang = new JComboBox<String>(new String[]{"Francais","English"});
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			lang.setSelectedIndex(0);
-		}else{
-			lang.setSelectedIndex(1);
+		ArrayList<String> combo = new ArrayList<>();
+		for(JSONObject json : LanguageManager.getAllAvailableLanguages()){
+			combo.add((String) json.get("LanguageName"));
 		}
+		String[] list = new String[combo.size()];
+		list = combo.toArray(list);
+		final JComboBox<String> lang = new JComboBox<String>(list);
 		lang.setBounds(0, 31, 150, 30);
 		
 		final JTextField recipeFolder = new JTextField(StorageManager.recipeFolder.toString());
 		recipeFolder.setBounds(0, 100, 400, 30);
 		
-		final JLabel chooseFolder = new JLabel();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			chooseFolder.setText(FR.recipeFolder);
-		}else{
-			chooseFolder.setText(EN.recipeFolder);
-		}
+		final JLabel chooseFolder = new JLabel(LanguageManager.getText("recipeFolder"));
 		chooseFolder.setBounds(0, 70, 200, 30);
 		
 		JButton choose = new JButton();
@@ -109,12 +94,7 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 			}
 		});
 		
-		JButton apply = new JButton();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			apply.setText(FR.apply);
-		}else{
-			apply.setText(EN.apply);
-		}
+		JButton apply = new JButton(LanguageManager.getText("apply"));
 		apply.setBounds(frame.getWidth()-200, frame.getHeight()-80, 200, 50);
 		apply.setForeground(Color.WHITE);
 		apply.setBackground(Color.GREEN);
@@ -125,11 +105,12 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 			@SuppressWarnings("static-access")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(lang.getSelectedItem() == "Francais"){
-					Configuration.getProperties().setProperty("language", "FR");
-				}else{
-					Configuration.getProperties().setProperty("language", "EN");
+				for(JSONObject json : LanguageManager.getAllAvailableLanguages()){
+					if(json.get("LanguageName").equals(lang.getSelectedItem())){
+						Configuration.getProperties().setProperty("language", (String) json.get("Abrevation"));
+					}
 				}
+				new LanguageManager();
 				Configuration.getProperties().setProperty("recipesFolder", recipeFolder.getText());
 				Configuration.saveProperties();
 				StorageManager.recipeFolder = new File(recipeFolder.getText());
@@ -184,12 +165,7 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 			}
 		});
 		
-		JButton cancel = new JButton();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			cancel.setText(FR.cancel);
-		}else{
-			cancel.setText(EN.cancel);
-		}
+		JButton cancel = new JButton(LanguageManager.getText("cancel"));
 		cancel.setBounds(0, frame.getHeight()-80, 200, 50);
 		cancel.setForeground(Color.WHITE);
 		cancel.setBackground(Color.RED);

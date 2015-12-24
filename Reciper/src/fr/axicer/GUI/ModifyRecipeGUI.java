@@ -20,11 +20,9 @@ import javax.swing.filechooser.FileFilter;
 import fr.axicer.Images;
 import fr.axicer.actions.ModifyRecipe;
 import fr.axicer.actions.createRecipe;
-import fr.axicer.lang.EN;
-import fr.axicer.lang.FR;
+import fr.axicer.lang.LanguageManager;
 import fr.axicer.main.Main;
 import fr.axicer.object.Recipe;
-import fr.axicer.util.Configuration;
 
 public class ModifyRecipeGUI extends GUI {
 
@@ -59,41 +57,21 @@ public class ModifyRecipeGUI extends GUI {
 										.replace("</html>", ""));
 			recette.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 			
-			submit = new JButton();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				submit.setText(FR.modify);
-			}else{
-				submit.setText(EN.modify);
-			}
+			submit = new JButton(LanguageManager.getText("modify"));
 			submit.setForeground(Color.WHITE);
 			submit.setBackground(Color.GREEN);
 			submit.setFocusPainted(false);
 			submit.setFont(new Font("Tahoma", Font.BOLD, 12));
 			
-			cancel = new JButton();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				cancel.setText(FR.cancel);
-			}else{
-				cancel.setText(EN.cancel);
-			}
+			cancel = new JButton(LanguageManager.getText("cancel"));
 			cancel.setForeground(Color.WHITE);
 			cancel.setBackground(Color.RED);
 			cancel.setFocusPainted(false);
 			cancel.setFont(new Font("Tahoma", Font.BOLD, 12));
 			
-			titleLabel = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				titleLabel.setText(FR.enterRecipeName);
-			}else{
-				titleLabel.setText(EN.enterRecipeName);
-			}
+			titleLabel = new JLabel(LanguageManager.getText("enterRecipeName"));
 			
-			recetteLabel = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				recetteLabel.setText(FR.enterRecipe);
-			}else{
-				recetteLabel.setText(EN.enterRecipe);
-			}
+			recetteLabel = new JLabel(LanguageManager.getText("enterRecipe"));
 			
 			scrollbar = new JScrollPane(recette);
 			
@@ -195,41 +173,21 @@ public class ModifyRecipeGUI extends GUI {
 			recette = new JTextArea("");
 			recette.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 			
-			submit = new JButton();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				submit.setText(FR.create);
-			}else{
-				submit.setText(EN.create);
-			}
+			submit = new JButton(LanguageManager.getText("create"));
 			submit.setForeground(Color.WHITE);
 			submit.setBackground(Color.GREEN);
 			submit.setFocusPainted(false);
 			submit.setFont(new Font("Tahoma", Font.BOLD, 12));
 			
-			cancel = new JButton();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				cancel.setText(FR.cancel);
-			}else{
-				cancel.setText(EN.cancel);
-			}
+			cancel = new JButton(LanguageManager.getText("cancel"));
 			cancel.setForeground(Color.WHITE);
 			cancel.setBackground(Color.RED);
 			cancel.setFocusPainted(false);
 			cancel.setFont(new Font("Tahoma", Font.BOLD, 12));
 			
-			titleLabel = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				titleLabel.setText(FR.enterRecipeName);
-			}else{
-				titleLabel.setText(EN.enterRecipeName);
-			}
+			titleLabel = new JLabel(LanguageManager.getText("enterRecipeName"));
 			
-			recetteLabel = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				recetteLabel.setText(FR.enterRecipe);
-			}else{
-				recetteLabel.setText(EN.enterRecipe);
-			}
+			recetteLabel = new JLabel(LanguageManager.getText("enterRecipe"));
 			
 			scrollbar = new JScrollPane(recette);
 			

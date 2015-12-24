@@ -19,12 +19,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
-import fr.axicer.lang.EN;
-import fr.axicer.lang.FR;
+import fr.axicer.lang.LanguageManager;
 import fr.axicer.main.Main;
 import fr.axicer.object.ModifyListRenderer;
 import fr.axicer.object.Recipe;
-import fr.axicer.util.Configuration;
 import fr.axicer.util.StorageManager;
 
 public class SelectModificationRecipeGUI extends GUI {
@@ -53,19 +51,9 @@ public class SelectModificationRecipeGUI extends GUI {
 			r.add(new Recipe(f));
 		}
 		
-		select = new JLabel();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			select.setText(FR.chooseRecipe);
-		}else{
-			select.setText(EN.chooseRecipe);
-		}
+		select = new JLabel(LanguageManager.getText("chooseRecipe"));
 		
-		open = new JButton();
-		if(Configuration.getProperties().getProperty("language").equals("FR")){
-			open.setText(FR.modifyTheRecipe);
-		}else{
-			open.setText(EN.modifyTheRecipe);
-		}
+		open = new JButton(LanguageManager.getText("modifyTheRecipe"));
 		open.setForeground(Color.WHITE);
 		open.setBackground(Color.GREEN);
 		open.setFocusPainted(false);

@@ -16,11 +16,9 @@ import javax.swing.JLabel;
 
 import fr.axicer.Images;
 import fr.axicer.GUI.ModifyRecipeGUI;
-import fr.axicer.lang.EN;
-import fr.axicer.lang.FR;
+import fr.axicer.lang.LanguageManager;
 import fr.axicer.main.Main;
 import fr.axicer.object.Recipe;
-import fr.axicer.util.Configuration;
 import fr.axicer.util.StorageManager;
 
 public class ModifyRecipe implements ActionListener{
@@ -36,22 +34,11 @@ public class ModifyRecipe implements ActionListener{
 		//check if title is empty
 		if(newTitle.isEmpty()){
 			//create a new frame to inform that the name can't be empty
-			JFrame error = new JFrame();
+			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setResizable(false);
 			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
 			
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				error.setTitle(FR.error);
-			}else{
-				error.setTitle(EN.error);
-			}
-			
-			JLabel message = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				message.setText(FR.titleCantbeEmpty);
-			}else{
-				message.setText(EN.titleCantbeEmpty);
-			}
+			JLabel message = new JLabel(LanguageManager.getText("titleCantbeEmpty"));
 			message.setForeground(Color.RED);
 			
 			error.add(message);
@@ -63,22 +50,11 @@ public class ModifyRecipe implements ActionListener{
 		//check if recipe is empty
 		if(newRecipe.isEmpty()){
 			//same as title
-			JFrame error = new JFrame();
+			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setResizable(false);
 			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
 			
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				error.setTitle(FR.error);
-			}else{
-				error.setTitle(EN.error);
-			}
-			
-			JLabel message = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				message.setText(FR.recipeCantbeEmpty);
-			}else{
-				message.setText(EN.recipeCantbeEmpty);
-			}
+			JLabel message = new JLabel(LanguageManager.getText("recipeCantbeEmpty"));
 			message.setForeground(Color.RED);
 			
 			error.add(message);
@@ -127,15 +103,8 @@ public class ModifyRecipe implements ActionListener{
 			}
 			
 			//inform that the recipe has been added
-			JFrame create = new JFrame();
-			JLabel message = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				create.setTitle(FR.modification);
-				message.setText(FR.modified);
-			}else{
-				create.setTitle(EN.modification);
-				message.setText(EN.modified);
-			}
+			JFrame create = new JFrame(LanguageManager.getText("modification"));
+			JLabel message = new JLabel(LanguageManager.getText("modified"));
 			create.setIconImage(Images.ICON.getIcon().getImage());
 			message.setForeground(Color.GREEN);
 			create.setResizable(false);

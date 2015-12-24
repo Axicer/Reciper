@@ -11,11 +11,9 @@ import javax.swing.JLabel;
 import fr.axicer.Images;
 import fr.axicer.GUI.SearchRecipeGUI;
 import fr.axicer.GUI.SearchResultGUI;
-import fr.axicer.lang.EN;
-import fr.axicer.lang.FR;
+import fr.axicer.lang.LanguageManager;
 import fr.axicer.main.Main;
 import fr.axicer.object.Recipe;
-import fr.axicer.util.Configuration;
 import fr.axicer.util.StorageManager;
 
 public class Search implements ActionListener {
@@ -47,23 +45,13 @@ public class Search implements ActionListener {
 		//if there is no recipe in the list
 		if(recipes.size() == 0){
 			//create a new frame to inform that there is an error
-			JFrame error = new JFrame();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				error.setTitle(FR.error);
-			}else{
-				error.setTitle(EN.error);
-			}
+			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setBounds(Main.screenWidth/2-150, Main.screeenHeight/2-75, 300, 150);
 			error.setResizable(false);
 			error.setAlwaysOnTop(true);
 			error.setIconImage(Images.ICON.getIcon().getImage());
 			
-			JLabel notfound = new JLabel();
-			if(Configuration.getProperties().getProperty("language").equals("FR")){
-				notfound.setText(FR.norecipefound);
-			}else{
-				notfound.setText(EN.norecipefound);
-			}
+			JLabel notfound = new JLabel(LanguageManager.getText("norecipefound"));
 			
 			error.add(notfound);
 			
