@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import fr.axicer.Images;
+import fr.axicer.Reciper;
 import fr.axicer.GUI.SearchRecipeGUI;
 import fr.axicer.GUI.SearchResultGUI;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.images.Images;
+import fr.axicer.languages.LanguageManager;
 import fr.axicer.object.Recipe;
 import fr.axicer.util.StorageManager;
 
@@ -46,7 +46,7 @@ public class Search implements ActionListener {
 		if(recipes.size() == 0){
 			//create a new frame to inform that there is an error
 			JFrame error = new JFrame(LanguageManager.getText("error"));
-			error.setBounds(Main.screenWidth/2-150, Main.screeenHeight/2-75, 300, 150);
+			error.setBounds(Reciper.screenWidth/2-150, Reciper.screeenHeight/2-75, 300, 150);
 			error.setResizable(false);
 			error.setAlwaysOnTop(true);
 			error.setIconImage(Images.ICON.getIcon().getImage());
@@ -58,13 +58,13 @@ public class Search implements ActionListener {
 			error.setVisible(true);
 		}else{
 			//else draw frame with result
-			if(Main.isMaximized){
-				Main.drawFrame(new SearchResultGUI("searchResultGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+			if(Reciper.isMaximized){
+				Reciper.drawFrame(new SearchResultGUI("searchResultGUI"), 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 			}else{
-				Main.drawFrame(new SearchResultGUI("searchResultGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+				Reciper.drawFrame(new SearchResultGUI("searchResultGUI"), Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 			}
 			SearchResultGUI.loadGUI(recipes);
-			Main.gui.show();
+			Reciper.gui.show();
 		}
 	}
 }

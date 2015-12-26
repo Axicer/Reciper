@@ -1,10 +1,10 @@
 package fr.axicer.util;
 
-import fr.axicer.main.Main;
+import fr.axicer.Reciper;
 
 public class TitleManager {
 
 	public static String getTitle() {
-		return Main.AppName+" v"+String.valueOf(Main.AppVersion);
+		return Reciper.AppName+" v"+String.valueOf(Reciper.AppVersion);
 	}
 }

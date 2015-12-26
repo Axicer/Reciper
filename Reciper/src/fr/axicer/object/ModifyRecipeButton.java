@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import fr.axicer.Reciper;
 import fr.axicer.GUI.SelectModificationRecipeGUI;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.languages.LanguageManager;
 
 public class ModifyRecipeButton extends JButton implements ActionListener{
 
@@ -30,13 +30,13 @@ public class ModifyRecipeButton extends JButton implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(Main.isMaximized){
-			Main.drawFrame(new SelectModificationRecipeGUI("selectRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+		if(Reciper.isMaximized){
+			Reciper.drawFrame(new SelectModificationRecipeGUI("selectRecipeGUI"), 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 		}else{
-			Main.drawFrame(new SelectModificationRecipeGUI("selectRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+			Reciper.drawFrame(new SelectModificationRecipeGUI("selectRecipeGUI"), Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 		}
 		SelectModificationRecipeGUI.loadGUI();
-		Main.gui.show();
+		Reciper.gui.show();
 	}
 
 }

@@ -1,4 +1,4 @@
-package fr.axicer.lang;
+package fr.axicer.languages;
 
 import java.io.File;
 import java.io.FileNotFoundException;

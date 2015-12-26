@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import fr.axicer.Reciper;
 import fr.axicer.GUI.SearchRecipeGUI;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.languages.LanguageManager;
 
 public class SearchRecipeButton extends JButton implements ActionListener{
 
@@ -27,12 +27,12 @@ public class SearchRecipeButton extends JButton implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(Main.isMaximized){
-			Main.drawFrame(new SearchRecipeGUI("searchRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+		if(Reciper.isMaximized){
+			Reciper.drawFrame(new SearchRecipeGUI("searchRecipeGUI"), 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 		}else{
-			Main.drawFrame(new SearchRecipeGUI("searchRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+			Reciper.drawFrame(new SearchRecipeGUI("searchRecipeGUI"), Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 		}
 		SearchRecipeGUI.loadGUI();
-		Main.gui.show();
+		Reciper.gui.show();
 	}
 }

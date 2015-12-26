@@ -20,9 +20,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
-import fr.axicer.Images;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.Reciper;
+import fr.axicer.images.Images;
+import fr.axicer.languages.LanguageManager;
 import fr.axicer.object.DeletionListRenderer;
 import fr.axicer.object.Recipe;
 import fr.axicer.util.StorageManager;
@@ -61,8 +61,8 @@ public class SelectDeletionRecipeGUI extends GUI {
 		open.setFocusPainted(false);
 		open.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		select.setBounds(1, Main.frame.getHeight()/4-50, 300, 50);
-		open.setBounds(Main.frame.getWidth()-200, Main.frame.getHeight()/4-50, 200, 50);
+		select.setBounds(1, Reciper.frame.getHeight()/4-50, 300, 50);
+		open.setBounds(Reciper.frame.getWidth()-200, Reciper.frame.getHeight()/4-50, 200, 50);
 		
 		open.addActionListener(new ActionListener() {
 			
@@ -72,7 +72,7 @@ public class SelectDeletionRecipeGUI extends GUI {
 					if(rec.getTitle() == choice.getSelectedValue()){
 						final JFrame frame = new JFrame(LanguageManager.getText("confirmation"));
 						frame.setLayout(null);
-						frame.setBounds(Main.screenWidth/2-150, Main.screeenHeight/2-75, 300, 150);
+						frame.setBounds(Reciper.screenWidth/2-150, Reciper.screeenHeight/2-75, 300, 150);
 						frame.setResizable(false);
 						frame.setIconImage(Images.ICON.getIcon().getImage());
 						frame.setAlwaysOnTop(true);
@@ -119,8 +119,8 @@ public class SelectDeletionRecipeGUI extends GUI {
 			}
 		});
 		
-		Main.frame.add(open);
-		Main.frame.add(select);
+		Reciper.frame.add(open);
+		Reciper.frame.add(select);
 		
 		if(r != null){
 			
@@ -146,7 +146,7 @@ public class SelectDeletionRecipeGUI extends GUI {
 			scroll.add(choice);
 			choice.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 			
-			scroll.setBounds(1, Main.frame.getHeight() / 4, Main.frame.getWidth()-2, 3*Main.frame.getHeight()/4-2);
+			scroll.setBounds(1, Reciper.frame.getHeight() / 4, Reciper.frame.getWidth()-2, 3*Reciper.frame.getHeight()/4-2);
 			
 			choice.addMouseListener(new MouseListener() {
 				
@@ -169,7 +169,7 @@ public class SelectDeletionRecipeGUI extends GUI {
 							if(rec.getTitle() == choice.getSelectedValue()){
 								final JFrame frame = new JFrame(LanguageManager.getText("confirmation"));
 								frame.setLayout(null);
-								frame.setBounds(Main.screenWidth/2-150, Main.screeenHeight/2-75, 300, 150);
+								frame.setBounds(Reciper.screenWidth/2-150, Reciper.screeenHeight/2-75, 300, 150);
 								frame.setResizable(false);
 								frame.setIconImage(Images.ICON.getIcon().getImage());
 								frame.setAlwaysOnTop(true);
@@ -217,9 +217,9 @@ public class SelectDeletionRecipeGUI extends GUI {
 				}
 			});
 			
-			Main.frame.add(scroll);
+			Reciper.frame.add(scroll);
 			
-			Main.frame.repaint();
+			Reciper.frame.repaint();
 		}
 	}
 	public static void deleteRecipe(Recipe r){
@@ -228,16 +228,16 @@ public class SelectDeletionRecipeGUI extends GUI {
 		}
 		r.getFolder().delete();
 		
-		if(Main.isMaximized){
-			Main.drawFrame(new SelectDeletionRecipeGUI("selectDeletionRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+		if(Reciper.isMaximized){
+			Reciper.drawFrame(new SelectDeletionRecipeGUI("selectDeletionRecipeGUI"), 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 		}else{
-			Main.drawFrame(new SelectDeletionRecipeGUI("selectDeletionRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+			Reciper.drawFrame(new SelectDeletionRecipeGUI("selectDeletionRecipeGUI"), Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 		}
 		SelectDeletionRecipeGUI.loadGUI();
-		Main.gui.show();
+		Reciper.gui.show();
 		
 		JFrame frame = new JFrame(LanguageManager.getText("deleted"));
-		frame.setBounds(Main.screenWidth/2-150, Main.screeenHeight/2-75, 300, 150);
+		frame.setBounds(Reciper.screenWidth/2-150, Reciper.screeenHeight/2-75, 300, 150);
 		frame.setIconImage(Images.ICON.getIcon().getImage());
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);

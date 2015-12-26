@@ -9,8 +9,8 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import fr.axicer.Images;
-import fr.axicer.main.Main;
+import fr.axicer.Reciper;
+import fr.axicer.images.Images;
 
 public class ReduceButton extends JButton implements ActionListener,MouseListener{
 
@@ -22,7 +22,7 @@ public class ReduceButton extends JButton implements ActionListener,MouseListene
 		this.setBorderPainted(false);
 		this.setContentAreaFilled(false);
 		this.setOpaque(false);
-		this.setBounds(Main.frame.getWidth()-64-32-4, 0, 32, 32);
+		this.setBounds(Reciper.frame.getWidth()-64-32-4, 0, 32, 32);
 		this.setIcon(button);
 		this.addActionListener(this);
 		this.addMouseListener(this);
@@ -49,6 +49,6 @@ public class ReduceButton extends JButton implements ActionListener,MouseListene
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Main.frame.setState(Frame.ICONIFIED);
+		Reciper.frame.setState(Frame.ICONIFIED);
 	}
 }

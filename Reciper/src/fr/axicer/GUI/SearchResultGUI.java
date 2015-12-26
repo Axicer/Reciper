@@ -21,9 +21,9 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import fr.axicer.Reciper;
 import fr.axicer.actions.Search;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.languages.LanguageManager;
 import fr.axicer.object.Recipe;
 import fr.axicer.object.SearchListRenderer;
 
@@ -50,8 +50,8 @@ public class SearchResultGUI extends GUI{
 		open.setFocusPainted(false);
 		open.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		select.setBounds(1, Main.frame.getHeight()/4-50, 300, 50);
-		open.setBounds(Main.frame.getWidth()-200, Main.frame.getHeight()/4-50, 200, 50);
+		select.setBounds(1, Reciper.frame.getHeight()/4-50, 300, 50);
+		open.setBounds(Reciper.frame.getWidth()-200, Reciper.frame.getHeight()/4-50, 200, 50);
 		
 		open.addActionListener(new ActionListener() {
 			
@@ -60,7 +60,7 @@ public class SearchResultGUI extends GUI{
 				for(Recipe rec : Search.recipes){
 					if(rec.getTitle() == choice.getSelectedValue()){
 						JFrame f = new JFrame(rec.getTitle());
-						f.setBounds(Main.screenWidth/4, Main.screeenHeight/4, 500, 300);
+						f.setBounds(Reciper.screenWidth/4, Reciper.screeenHeight/4, 500, 300);
 						JTextArea textField = new JTextArea(rec.getRecipe()
 								.replace("<html>", "")
 								.replace("</html>", "")
@@ -77,8 +77,8 @@ public class SearchResultGUI extends GUI{
 			}
 		});
 		
-		Main.frame.add(open);
-		Main.frame.add(select);
+		Reciper.frame.add(open);
+		Reciper.frame.add(select);
 		
 		if(r != null){
 			
@@ -104,7 +104,7 @@ public class SearchResultGUI extends GUI{
 			scroll.add(choice);
 			choice.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 			
-			scroll.setBounds(1, Main.frame.getHeight() / 4, Main.frame.getWidth()-2, 3*Main.frame.getHeight()/4-2);
+			scroll.setBounds(1, Reciper.frame.getHeight() / 4, Reciper.frame.getWidth()-2, 3*Reciper.frame.getHeight()/4-2);
 			
 			choice.addMouseListener(new MouseListener() {
 				
@@ -126,7 +126,7 @@ public class SearchResultGUI extends GUI{
 						for(Recipe rec : Search.recipes){
 							if(rec.getTitle() == choice.getSelectedValue()){
 								JFrame f = new JFrame(rec.getTitle());
-								f.setBounds(Main.screenWidth/4, Main.screeenHeight/4, 500, 300);
+								f.setBounds(Reciper.screenWidth/4, Reciper.screeenHeight/4, 500, 300);
 								JTextArea textField = new JTextArea(rec.getRecipe()
 										.replace("<html>", "")
 										.replace("</html>", "")
@@ -144,9 +144,9 @@ public class SearchResultGUI extends GUI{
 				}
 			});
 			
-			Main.frame.add(scroll);
+			Reciper.frame.add(scroll);
 			
-			Main.frame.repaint();
+			Reciper.frame.repaint();
 		}
 	}
 }

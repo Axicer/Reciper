@@ -1,4 +1,4 @@
-package fr.axicer.main;
+package fr.axicer;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -7,9 +7,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import fr.axicer.Images;
 import fr.axicer.GUI.GUI;
-import fr.axicer.lang.LanguageManager;
+import fr.axicer.images.Images;
+import fr.axicer.languages.LanguageManager;
 import fr.axicer.object.CloseButton;
 import fr.axicer.object.CreateRecipeButton;
 import fr.axicer.object.DeleteRecipeButton;
@@ -26,7 +26,7 @@ import fr.axicer.util.OSEnum;
 import fr.axicer.util.StorageManager;
 import fr.axicer.util.TitleManager;
 
-public class Main {
+public class Reciper {
 	
 	public static GraphicsDevice gd;
 	public static int screenWidth;
@@ -97,10 +97,10 @@ public class Main {
 		frame.add(new ModifyRecipeButton());
 		frame.add(new DeleteRecipeButton());
 		
-		if(Main.gui != null)Main.gui.hide();
+		if(Reciper.gui != null)Reciper.gui.hide();
 		if(gui != null){
-			Main.lastgui = Main.gui;
-			Main.gui = gui;
+			Reciper.lastgui = Reciper.gui;
+			Reciper.gui = gui;
 			gui.show();
 		}
 		

@@ -8,8 +8,8 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import fr.axicer.Images;
-import fr.axicer.main.Main;
+import fr.axicer.Reciper;
+import fr.axicer.images.Images;
 
 public class CloseButton extends JButton implements ActionListener, MouseListener{
 
@@ -22,7 +22,7 @@ public class CloseButton extends JButton implements ActionListener, MouseListene
 		this.setOpaque(false);
 		this.setBorderPainted(false);
 		this.setIcon(button);
-		this.setBounds(Main.frame.getWidth()-32, 0, 32, 32);
+		this.setBounds(Reciper.frame.getWidth()-32, 0, 32, 32);
 		this.addActionListener(this);
 		this.addMouseListener(this);
 	}

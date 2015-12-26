@@ -19,8 +19,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.Reciper;
+import fr.axicer.languages.LanguageManager;
 import fr.axicer.object.ModifyListRenderer;
 import fr.axicer.object.Recipe;
 import fr.axicer.util.StorageManager;
@@ -59,8 +59,8 @@ public class SelectModificationRecipeGUI extends GUI {
 		open.setFocusPainted(false);
 		open.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		select.setBounds(1, Main.frame.getHeight()/4-50, 300, 50);
-		open.setBounds(Main.frame.getWidth()-200, Main.frame.getHeight()/4-50, 200, 50);
+		select.setBounds(1, Reciper.frame.getHeight()/4-50, 300, 50);
+		open.setBounds(Reciper.frame.getWidth()-200, Reciper.frame.getHeight()/4-50, 200, 50);
 		
 		open.addActionListener(new ActionListener() {
 			
@@ -68,22 +68,22 @@ public class SelectModificationRecipeGUI extends GUI {
 			public void actionPerformed(ActionEvent e) {
 				for(Recipe rec : r){
 					if(rec.getTitle() == choice.getSelectedValue()){
-						if(Main.isMaximized){
-							Main.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+						if(Reciper.isMaximized){
+							Reciper.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 							ModifyRecipeGUI.loadGUI(rec);
-							Main.gui.show();
+							Reciper.gui.show();
 						}else{
-							Main.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+							Reciper.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 							ModifyRecipeGUI.loadGUI(rec);
-							Main.gui.show();
+							Reciper.gui.show();
 						}
 					}
 				}
 			}
 		});
 		
-		Main.frame.add(open);
-		Main.frame.add(select);
+		Reciper.frame.add(open);
+		Reciper.frame.add(select);
 		
 		if(r != null){
 			
@@ -109,7 +109,7 @@ public class SelectModificationRecipeGUI extends GUI {
 			scroll.add(choice);
 			choice.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 			
-			scroll.setBounds(1, Main.frame.getHeight() / 4, Main.frame.getWidth()-2, 3*Main.frame.getHeight()/4-2);
+			scroll.setBounds(1, Reciper.frame.getHeight() / 4, Reciper.frame.getWidth()-2, 3*Reciper.frame.getHeight()/4-2);
 			
 			choice.addMouseListener(new MouseListener() {
 				
@@ -130,14 +130,14 @@ public class SelectModificationRecipeGUI extends GUI {
 					if(e.getClickCount() == 2){
 						for(Recipe rec : r){
 							if(rec.getTitle() == choice.getSelectedValue()){
-								if(Main.isMaximized){
-									Main.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+								if(Reciper.isMaximized){
+									Reciper.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 									ModifyRecipeGUI.loadGUI(rec);
-									Main.gui.show();
+									Reciper.gui.show();
 								}else{
-									Main.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+									Reciper.drawFrame(new ModifyRecipeGUI("modifyRecipeGUI"), Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 									ModifyRecipeGUI.loadGUI(rec);
-									Main.gui.show();
+									Reciper.gui.show();
 								}
 							}
 						}
@@ -145,9 +145,9 @@ public class SelectModificationRecipeGUI extends GUI {
 				}
 			});
 			
-			Main.frame.add(scroll);
+			Reciper.frame.add(scroll);
 			
-			Main.frame.repaint();
+			Reciper.frame.repaint();
 		}
 	}
 	

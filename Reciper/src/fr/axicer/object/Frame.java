@@ -9,8 +9,8 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import fr.axicer.Images;
-import fr.axicer.main.Main;
+import fr.axicer.Reciper;
+import fr.axicer.images.Images;
 
 public class Frame extends JFrame {
 
@@ -32,7 +32,7 @@ public class Frame extends JFrame {
 		this.setIconImage(icon.getImage());
 		this.addMouseListener(new MouseAdapter() {
 		      public void mousePressed(MouseEvent e) {
-		    	  if(!Main.isMaximized){
+		    	  if(!Reciper.isMaximized){
 		    		  point.x = e.getX();
 		    		  point.y = e.getY();
 		    	  }
@@ -40,7 +40,7 @@ public class Frame extends JFrame {
 		    });
 		this.addMouseMotionListener(new MouseMotionAdapter() {
 		      public void mouseDragged(MouseEvent e) {
-		    	  if(!Main.isMaximized){
+		    	  if(!Reciper.isMaximized){
 		    		  Point p = getLocation();
 				      setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
 		    	  }

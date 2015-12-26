@@ -14,10 +14,10 @@ import java.util.Properties;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import fr.axicer.Images;
+import fr.axicer.Reciper;
 import fr.axicer.GUI.CreateRecipeGUI;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.images.Images;
+import fr.axicer.languages.LanguageManager;
 import fr.axicer.util.StorageManager;
 
 public class createRecipe implements ActionListener{
@@ -39,7 +39,7 @@ public class createRecipe implements ActionListener{
 			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setIconImage(Images.ICON.getIcon().getImage());
 			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			error.setBounds(Reciper.screenWidth/2-125, Reciper.screeenHeight/2-62, 250, 125);
 			error.setAlwaysOnTop(true);
 			
 			JLabel message = new JLabel(LanguageManager.getText("titleCantbeEmpty"));
@@ -56,7 +56,7 @@ public class createRecipe implements ActionListener{
 			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setIconImage(Images.ICON.getIcon().getImage());
 			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			error.setBounds(Reciper.screenWidth/2-125, Reciper.screeenHeight/2-62, 250, 125);
 			error.setAlwaysOnTop(true);
 			
 			JLabel message = new JLabel(LanguageManager.getText("recipeCantbeEmpty"));
@@ -76,7 +76,7 @@ public class createRecipe implements ActionListener{
 			//inform error
 			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			error.setBounds(Reciper.screenWidth/2-125, Reciper.screeenHeight/2-62, 250, 125);
 			error.setAlwaysOnTop(true);
 			
 			JLabel message = new JLabel(LanguageManager.getText("recipeAlreadyAdded"));
@@ -134,7 +134,7 @@ public class createRecipe implements ActionListener{
 			create.setIconImage(Images.ICON.getIcon().getImage());
 			message.setForeground(Color.GREEN);
 			create.setResizable(false);
-			create.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			create.setBounds(Reciper.screenWidth/2-125, Reciper.screeenHeight/2-62, 250, 125);
 			create.add(message);
 			create.setAlwaysOnTop(true);
 			create.setVisible(true);

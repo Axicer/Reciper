@@ -1,11 +1,11 @@
-package fr.axicer.lang;
+package fr.axicer.languages;
 
 import java.io.File;
 
 public enum BaseLanguages {
 	
-	FR(new File(BaseLanguages.class.getResource("base/FR.lang").getFile())),
-	EN(new File(BaseLanguages.class.getResource("base/EN.lang").getFile()));
+	FR(new File(BaseLanguages.class.getResource("resources/FR.lang").getFile())),
+	EN(new File(BaseLanguages.class.getResource("resources/EN.lang").getFile()));
 	
 	private File file;
 	

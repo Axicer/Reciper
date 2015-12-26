@@ -10,9 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import fr.axicer.Reciper;
 import fr.axicer.actions.Search;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.languages.LanguageManager;
 
 public class SearchRecipeGUI extends GUI {
 	
@@ -41,15 +41,15 @@ public class SearchRecipeGUI extends GUI {
 		search.setFocusPainted(false);
 		search.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		wordlabel.setBounds(1, Main.frame.getHeight()/9, 200, 40);
-		word.setBounds(1, Main.frame.getHeight()/9+42, 300, 40);
-		search.setBounds(Main.frame.getWidth()-204, Main.frame.getHeight()/9+42, 200, 40);
+		wordlabel.setBounds(1, Reciper.frame.getHeight()/9, 200, 40);
+		word.setBounds(1, Reciper.frame.getHeight()/9+42, 300, 40);
+		search.setBounds(Reciper.frame.getWidth()-204, Reciper.frame.getHeight()/9+42, 200, 40);
 		
 		search.addActionListener(new Search());
 		
-		Main.frame.add(wordlabel);
-		Main.frame.add(word);
-		Main.frame.add(search);
+		Reciper.frame.add(wordlabel);
+		Reciper.frame.add(word);
+		Reciper.frame.add(search);
 		
 		comps.add(wordlabel);
 		comps.add(word);

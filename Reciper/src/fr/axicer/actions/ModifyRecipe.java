@@ -14,10 +14,10 @@ import java.util.Properties;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import fr.axicer.Images;
+import fr.axicer.Reciper;
 import fr.axicer.GUI.ModifyRecipeGUI;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.images.Images;
+import fr.axicer.languages.LanguageManager;
 import fr.axicer.object.Recipe;
 import fr.axicer.util.StorageManager;
 
@@ -36,7 +36,7 @@ public class ModifyRecipe implements ActionListener{
 			//create a new frame to inform that the name can't be empty
 			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
+			error.setBounds(Reciper.screenWidth/2-40, Reciper.screeenHeight/2-40, 250, 50);
 			
 			JLabel message = new JLabel(LanguageManager.getText("titleCantbeEmpty"));
 			message.setForeground(Color.RED);
@@ -52,7 +52,7 @@ public class ModifyRecipe implements ActionListener{
 			//same as title
 			JFrame error = new JFrame(LanguageManager.getText("error"));
 			error.setResizable(false);
-			error.setBounds(Main.screenWidth/2-40, Main.screeenHeight/2-40, 250, 50);
+			error.setBounds(Reciper.screenWidth/2-40, Reciper.screeenHeight/2-40, 250, 50);
 			
 			JLabel message = new JLabel(LanguageManager.getText("recipeCantbeEmpty"));
 			message.setForeground(Color.RED);
@@ -96,10 +96,10 @@ public class ModifyRecipe implements ActionListener{
 				io.printStackTrace();
 			}
 			
-			if(Main.isMaximized){
-				Main.drawFrame(null, 0, 0, Main.screenWidth, Main.screeenHeight);
+			if(Reciper.isMaximized){
+				Reciper.drawFrame(null, 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 			}else{
-				Main.drawFrame(null, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+				Reciper.drawFrame(null, Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 			}
 			
 			//inform that the recipe has been added
@@ -108,7 +108,7 @@ public class ModifyRecipe implements ActionListener{
 			create.setIconImage(Images.ICON.getIcon().getImage());
 			message.setForeground(Color.GREEN);
 			create.setResizable(false);
-			create.setBounds(Main.screenWidth/2-125, Main.screeenHeight/2-62, 250, 125);
+			create.setBounds(Reciper.screenWidth/2-125, Reciper.screeenHeight/2-62, 250, 125);
 			create.add(message);
 			create.setVisible(true);
 		} catch (IOException e1) {

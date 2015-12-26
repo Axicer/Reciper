@@ -17,10 +17,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 
-import fr.axicer.Images;
+import fr.axicer.Reciper;
 import fr.axicer.actions.createRecipe;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.images.Images;
+import fr.axicer.languages.LanguageManager;
 
 public class CreateRecipeGUI extends GUI{
 
@@ -79,24 +79,24 @@ public class CreateRecipeGUI extends GUI{
 		chooseImageButton.setBorderPainted(false);
 		chooseImageButton.setContentAreaFilled(false);
 		
-		titleLabel.setBounds(1, Main.frame.getHeight()/9, 200, 40);
-		title.setBounds(1, Main.frame.getHeight()/9+42, 400, 40);
-		recetteLabel.setBounds(1, Main.frame.getHeight()/9+84, 200, 40);
-		scrollbar.setBounds(1, Main.frame.getHeight()/9+126, Main.frame.getWidth(), Main.frame.getHeight()/2);
-		cancel.setBounds(1, Main.frame.getHeight()-42, 100, 40);
-		submit.setBounds(105, Main.frame.getHeight()-42, 100, 40);
-		imageField.setBounds(Main.frame.getWidth()-300, Main.frame.getHeight()/9+42, 200, 40);
-		chooseImageButton.setBounds(Main.frame.getWidth()-99, Main.frame.getHeight()/9+42, 40, 40);
-		chooseImageLabel.setBounds(Main.frame.getWidth()-300, Main.frame.getHeight()/9, 200, 40);
+		titleLabel.setBounds(1, Reciper.frame.getHeight()/9, 200, 40);
+		title.setBounds(1, Reciper.frame.getHeight()/9+42, 400, 40);
+		recetteLabel.setBounds(1, Reciper.frame.getHeight()/9+84, 200, 40);
+		scrollbar.setBounds(1, Reciper.frame.getHeight()/9+126, Reciper.frame.getWidth(), Reciper.frame.getHeight()/2);
+		cancel.setBounds(1, Reciper.frame.getHeight()-42, 100, 40);
+		submit.setBounds(105, Reciper.frame.getHeight()-42, 100, 40);
+		imageField.setBounds(Reciper.frame.getWidth()-300, Reciper.frame.getHeight()/9+42, 200, 40);
+		chooseImageButton.setBounds(Reciper.frame.getWidth()-99, Reciper.frame.getHeight()/9+42, 40, 40);
+		chooseImageLabel.setBounds(Reciper.frame.getWidth()-300, Reciper.frame.getHeight()/9, 200, 40);
 		
 		cancel.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(Main.isMaximized){
-					Main.drawFrame(null, 0, 0, Main.screenWidth, Main.screeenHeight);
+				if(Reciper.isMaximized){
+					Reciper.drawFrame(null, 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 				}else{
-					Main.drawFrame(null, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+					Reciper.drawFrame(null, Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 				}
 			}
 		});
@@ -136,15 +136,15 @@ public class CreateRecipeGUI extends GUI{
 			}
 		});
 		
-		Main.frame.add(titleLabel);
-		Main.frame.add(title);
-		Main.frame.add(recetteLabel);
-		Main.frame.add(scrollbar);
-		Main.frame.add(cancel);
-		Main.frame.add(submit);
-		Main.frame.add(imageField);
-		Main.frame.add(chooseImageButton);
-		Main.frame.add(chooseImageLabel);
+		Reciper.frame.add(titleLabel);
+		Reciper.frame.add(title);
+		Reciper.frame.add(recetteLabel);
+		Reciper.frame.add(scrollbar);
+		Reciper.frame.add(cancel);
+		Reciper.frame.add(submit);
+		Reciper.frame.add(imageField);
+		Reciper.frame.add(chooseImageButton);
+		Reciper.frame.add(chooseImageLabel);
 		
 		comps.add(titleLabel);
 		comps.add(title);

@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import fr.axicer.Reciper;
 import fr.axicer.GUI.CreateRecipeGUI;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.languages.LanguageManager;
 
 public class CreateRecipeButton extends JButton implements ActionListener{
 	
@@ -26,12 +26,12 @@ public class CreateRecipeButton extends JButton implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(Main.isMaximized){
-			Main.drawFrame(new CreateRecipeGUI("createRecipeGUI"), 0, 0, Main.screenWidth, Main.screeenHeight);
+		if(Reciper.isMaximized){
+			Reciper.drawFrame(new CreateRecipeGUI("createRecipeGUI"), 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 		}else{
-			Main.drawFrame(new CreateRecipeGUI("createRecipeGUI"), Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+			Reciper.drawFrame(new CreateRecipeGUI("createRecipeGUI"), Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 		}
 		CreateRecipeGUI.loadGUI("", "");
-		Main.gui.show();
+		Reciper.gui.show();
 	}
 }

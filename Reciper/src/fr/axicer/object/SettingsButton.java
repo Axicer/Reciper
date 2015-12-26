@@ -19,14 +19,14 @@ import javax.swing.JTextField;
 
 import org.json.simple.JSONObject;
 
-import fr.axicer.Images;
+import fr.axicer.Reciper;
 import fr.axicer.GUI.CreateRecipeGUI;
 import fr.axicer.GUI.SearchResultGUI;
 import fr.axicer.GUI.SelectDeletionRecipeGUI;
 import fr.axicer.GUI.SelectModificationRecipeGUI;
 import fr.axicer.actions.Search;
-import fr.axicer.lang.LanguageManager;
-import fr.axicer.main.Main;
+import fr.axicer.images.Images;
+import fr.axicer.languages.LanguageManager;
 import fr.axicer.util.Configuration;
 import fr.axicer.util.StorageManager;
 
@@ -41,7 +41,7 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 		setOpaque(false);
 		setBorderPainted(false);
 		setIcon(button);
-		setBounds(Main.frame.getWidth()-134, 0, 32, 32);
+		setBounds(Reciper.frame.getWidth()-134, 0, 32, 32);
 		addActionListener(this);
 		addMouseListener(this);
 	}
@@ -50,7 +50,7 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 	public void actionPerformed(ActionEvent e) {
 		final JFrame frame = new JFrame(LanguageManager.getText("settings"));
 		frame.setIconImage(Images.ICON.getIcon().getImage());
-		frame.setBounds(Main.screenWidth/4, Main.screeenHeight/6, 600, 450);
+		frame.setBounds(Reciper.screenWidth/4, Reciper.screeenHeight/6, 600, 450);
 		frame.setLayout(null);
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
@@ -115,51 +115,51 @@ public class SettingsButton extends JButton implements ActionListener,MouseListe
 				Configuration.saveProperties();
 				StorageManager.recipeFolder = new File(recipeFolder.getText());
 				frame.setVisible(false);
-				if(Main.isMaximized){
-					if(Main.gui instanceof SearchResultGUI){
-						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
+				if(Reciper.isMaximized){
+					if(Reciper.gui instanceof SearchResultGUI){
+						Reciper.drawFrame(Reciper.gui, 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 						SearchResultGUI.loadGUI(Search.recipes);
-						Main.gui.show();
-					}else if(Main.gui instanceof CreateRecipeGUI){
-						CreateRecipeGUI gui = (CreateRecipeGUI) Main.gui;
+						Reciper.gui.show();
+					}else if(Reciper.gui instanceof CreateRecipeGUI){
+						CreateRecipeGUI gui = (CreateRecipeGUI) Reciper.gui;
 						String title = gui.title.getText();
 						String recipe = gui.recette.getText();
-						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
+						Reciper.drawFrame(Reciper.gui, 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 						CreateRecipeGUI.loadGUI(title, recipe);
-						Main.gui.show();
-					}else if(Main.gui instanceof SelectModificationRecipeGUI){
-						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
+						Reciper.gui.show();
+					}else if(Reciper.gui instanceof SelectModificationRecipeGUI){
+						Reciper.drawFrame(Reciper.gui, 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 						SelectModificationRecipeGUI.loadGUI();
-						Main.gui.show();
-					}else if(Main.gui instanceof SelectDeletionRecipeGUI){
-						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
+						Reciper.gui.show();
+					}else if(Reciper.gui instanceof SelectDeletionRecipeGUI){
+						Reciper.drawFrame(Reciper.gui, 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 						SelectDeletionRecipeGUI.loadGUI();
-						Main.gui.show();
+						Reciper.gui.show();
 					}else{
-						Main.drawFrame(Main.gui, 0, 0, Main.screenWidth, Main.screeenHeight);
+						Reciper.drawFrame(Reciper.gui, 0, 0, Reciper.screenWidth, Reciper.screeenHeight);
 					}
 				}else{
-					if(Main.gui instanceof SearchResultGUI){
-						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+					if(Reciper.gui instanceof SearchResultGUI){
+						Reciper.drawFrame(Reciper.gui, Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 						SearchResultGUI.loadGUI(Search.recipes);
-						Main.gui.show();
-					}else if(Main.gui instanceof CreateRecipeGUI){
-						CreateRecipeGUI gui = (CreateRecipeGUI) Main.gui;
+						Reciper.gui.show();
+					}else if(Reciper.gui instanceof CreateRecipeGUI){
+						CreateRecipeGUI gui = (CreateRecipeGUI) Reciper.gui;
 						String title = gui.title.getText();
 						String recipe = gui.recette.getText();
-						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+						Reciper.drawFrame(Reciper.gui, Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 						CreateRecipeGUI.loadGUI(title, recipe);
-						Main.gui.show();
-					}else if(Main.gui instanceof SelectModificationRecipeGUI){
-						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+						Reciper.gui.show();
+					}else if(Reciper.gui instanceof SelectModificationRecipeGUI){
+						Reciper.drawFrame(Reciper.gui, Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 						SelectModificationRecipeGUI.loadGUI();
-						Main.gui.show();
-					}else if(Main.gui instanceof SelectDeletionRecipeGUI){
-						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+						Reciper.gui.show();
+					}else if(Reciper.gui instanceof SelectDeletionRecipeGUI){
+						Reciper.drawFrame(Reciper.gui, Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 						SelectDeletionRecipeGUI.loadGUI();
-						Main.gui.show();
+						Reciper.gui.show();
 					}else{
-						Main.drawFrame(Main.gui, Main.screenWidth/5, Main.screeenHeight/8, 800, 600);
+						Reciper.drawFrame(Reciper.gui, Reciper.screenWidth/5, Reciper.screeenHeight/8, 800, 600);
 					}
 				}
 			}
